@@ -1,0 +1,3 @@
+remote_theme: jekyll-text-theme
+plugins:
+  - jekyll-remote-theme
