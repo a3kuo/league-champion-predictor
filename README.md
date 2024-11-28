@@ -1,2 +1,1 @@
-# league-champion-predictor
-Final Project for DSC80 at UCSD.
+# Predicting Best Role for a Champion in League of Legends
