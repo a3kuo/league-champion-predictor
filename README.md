@@ -158,3 +158,11 @@ I performed a permutation test by shuffling the `mid` and `top` labels while plo
 
 The p-value is 0.0, which is less than 0.05 so I reject the null hypothesis. This implies that there is a difference in total gold distribution between the mid and top lanes for Karma.
 
+## Framing a Prediction Problem
+
+### Findings
+From previous hypothesis testing, it suggests that there is a difference in Karma played mid and Karma played top, but there are many other columns than just total gold. I also want to generalize this to any champion, but the model will only focus on the champion Karma. So my prediction problem will be:
+**Given the champion Karma, can I predict what position they played?
+
+### Execution
+This model will be a multi-class classification where the response variable is `position`. This variable is chosen because it represents the position the champion played in the game. F1-score will be the chosen metric because although accuracy is a good overall metric, each position is not played equally by most champions, including Karma as shown earlier, resulting in the data being imbalanced. This means that F1-score will give better results. I am trying to predict what position they played after the game completed, so all columns are available to be used for prediction.
