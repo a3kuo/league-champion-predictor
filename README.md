@@ -177,3 +177,24 @@ The model is kept as a `RandomForestClassifier`, but features added were `cspm` 
 Another way to optimize the model is by tuning the hyperparameters, which were done with `GridSearchCV` to find the optimal hyperparameters, `max_depth` and `n_estimators`. The resulting combination from the grid search was that the max depth is 10, and the number of estimators is 30.
 
 As a result of these adjustments to the model, the F1-score of the final model increased to 0.9927 from 0.2850. This is a large increase from the baseline model, showing that the final model will perform much better. The nearly 1 F1-score shows that both precision and recall are much better than they original were, so the predictions made by the model improved as well.
+
+## Fairness Analysis
+
+I want to see if the model is fair for each `side`, so my different groups will be Blue side and Red side. Each game of League of Legends has 2 teams, which are on different sides (blue and red). More specifically, my question for fairness is: **Does my model perform worse for players on blue side than it does for players on Red side?**
+My hypotheses are the following:
+
+**Null Hypothesis**: My model is fair. The accuracy for players on blue side or red side are roughly the same, and any differences are due to random chance. <br>
+**Alternate Hypothesis**: My model is unfair. The accuracy for players on blue side is not the same as the accuracy for players on red side. <br>
+**Test statistic**: The absolute difference in accuracy between players on blue or red side <br>
+**Significance level**: 0.01 
+
+The following histogram shows the distribution of absolute differences in accuracy between sides as a result of a permutation test where the `side` column was shuffled.
+
+<iframe
+  src="assets/fairness.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The resulting p-value is 0.394, which is greater than 0.01, so I failed to reject the null hypothesis. This suggests that the model is fair for both blue and red sides.
