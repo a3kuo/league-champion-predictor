@@ -10,6 +10,7 @@ This dataset covers professional matches from the multiplayer game League of Leg
 Data being collected include game elements that define the performance of players and their teams, as well as general information about the matches being played. The game has over 150 unique champions, which are characters the player can choose to play as. There are also five possible roles, one for each team member, for each character, and the main question I have is: **Given a character, what position did they play?** While playing the game I have played many characters, but I enjoy a select few. However, I want to know which position they played in order to have the most success and fun playing. As a result, the model I am creating will predict what position(s) my chosen character would play.
 
 The original dataframe has 150,180 rows, representing individual players and team summaries, and many columns describing what events have occured in each game. However, only a select few of these columns are relevant to the analysis. These columns include:
+
 |Column                |Description|
 |---                |---        |
 |`'league'`                |Professional league/region where the match happened|
@@ -37,6 +38,7 @@ However, several of these columns were irrelevant to the analysis for this quest
 `league`, `side`, `position`, `champion`, `gamelength`, `result`, `kills`, `deaths`, `assists`, `damagetochampions`, `totalgold`, and `total cs`. Furthermore, I am only interested in individual players performances, so I dropped rows that describe the team summaries.
 
 The head of the cleaned dataframe is:
+
 | league   | side   | position   | champion   |   gamelength | result   |   kills |   deaths |   assists |   damagetochampions |   totalgold |   total cs |
 |:---------|:-------|:-----------|:-----------|-------------:|:---------|--------:|---------:|----------:|--------------------:|------------:|-----------:|
 | LCKC     | Blue   | top        | Renekton   |         1713 | False    |       2 |        3 |         2 |               15768 |       10934 |        231 |
@@ -80,6 +82,7 @@ Bars for mid and sup are the most prominent in the graph, showing that those 2 p
 
 ### Interesting Aggregates
 Different positions do different jobs, but they are still all measured by the same columns. Therefore I wanted to see what what happen when I grouped by position and display the sum of some of the cleaned columns. The resulting dataframe is:
+
 | position   |   totalgold |   damagetochampions |   kills |   assists |         total cs |
 |:-----------|------------:|--------------------:|--------:|----------:|-----------------:|
 | bot        |   341633723 |         4.52077e+08 |  106658 |    134494 |      6.97024e+06 |
@@ -192,7 +195,7 @@ The following histogram shows the distribution of absolute differences in accura
 
 <iframe
   src="assets/fairness.html"
-  width="800"
+  width="600"
   height="600"
   frameborder="0"
 ></iframe>
