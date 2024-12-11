@@ -133,3 +133,28 @@ Once again, I performed a permutation test by shuffling the `side` column and re
 ></iframe>
 
 The p-value is 1.0, which is greater than 0.05, so I failed to reject the null hypothesis, meaning that `monsterkillsenemyjungle` is not MAR depending on `side`.
+
+## Hypothesis Testing
+Back to the original question, I want to see what position Karma is best in. However, I want to keep the comparison similar.
+
+*Note: position and lane mean the same thing for "mid", "top", and "bot"
+ex. when position is mid, it means "mid lane"*
+
+Since mid and top lanes are both solo lanes, where players play 1v1 against their opponent, I made my hypotheses based on these lanes:
+
+**Null Hypothesis**: Karma played in the mid lane has the same gold distribution as Karma played in the top lane.
+**Alternate Hypothesis**: Karma played in the mid lane has a higher gold distribution than Karma played in the top lane.
+**Test Statistic**: Difference in means
+**Significance Level**: 0.05
+
+I performed a permutation test by shuffling the `mid` and `top` labels while plotting `totalgold`. I repeated this process 500 times and the following histogram shows the results:
+
+<iframe
+  src="assets/meandifftotalgold.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The p-value is 0.0, which is less than 0.05 so I reject the null hypothesis. This implies that there is a difference in total gold distribution between the mid and top lanes for Karma.
+
