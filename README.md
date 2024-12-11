@@ -138,7 +138,7 @@ Once again, I performed a permutation test by shuffling the `side` column and re
 The p-value is 1.0, which is greater than 0.05, so I failed to reject the null hypothesis, meaning that `monsterkillsenemyjungle` is not MAR depending on `side`.
 
 ## Hypothesis Testing
-Back to the original question, I want to see what position Karma is best in. However, I want to keep the comparison similar.
+Back to the original question, I want to see what position Karma is best in. However, I want to keep the comparison similar. Gold is used as a measurement because it is used to purchase items, making your champion stronger and more effective at dealing with the enemy.
 
 *Note: position and lane mean the same thing for "mid", "top", and "bot"
 ex. when position is mid, it means "mid lane"*
