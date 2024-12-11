@@ -169,3 +169,11 @@ Given the champion Karma, I used `RandomForestClassifier` to predict the positio
 `damagetochampions` was chosen because by doing more damage to the enemy, a player is able to apply pressure to them and `totalgold` was chosen because higher gold translates to a higher power level of the champion. `result` is chosen because a win would be better than a loss in that role.
 
 The model resulted in an overall F1-score of 0.2850. Both *precision* and **recall** are low, so that means there is a large amount of false positives and false negatives. This could imply that the predictions are too wide and need to be narrowed, which will be done by improving the model.
+
+## Final Model
+
+The model is kept as a `RandomForestClassifier`, but features added were `cspm` (which translates to minion and monster kills per minute) because the higher the number, the more gold the player is able to generate, so they can get stronger faster than the enemy. I will also be adding `visionscore` because the higher the score, the more the player is able to take more control of the map and the game. Since `cspm` is already scaled to per minute, the feature will be left as is while `visionscore` will be transformed using `StandardScaler` because it usually increases as the game goes on. These values are more specific aspects of the game, so they should help determine which position could do these better than the others.
+
+Another way to optimize the model is by tuning the hyperparameters, which were done with `GridSearchCV` to find the optimal hyperparameters, `max_depth` and `n_estimators`. The resulting combination from the grid search was that the max depth is 10, and the number of estimators is 30.
+
+As a result of these adjustments to the model, the F1-score of the final model increased to 0.9927 from 0.2850. This is a large increase from the baseline model, showing that the final model will perform much better. The nearly 1 F1-score shows that both precision and recall are much better than they original were, so the predictions made by the model improved as well.
