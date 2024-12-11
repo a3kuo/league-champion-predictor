@@ -52,7 +52,7 @@ To find columns to use for prediction, I performed univariate analysis on the di
 
 <iframe
   src="assets/totalgold.html"
-  width="800"
+  width="900"
   height="600"
   frameborder="0"
 ></iframe>
@@ -61,7 +61,7 @@ The other distribution is for the total damage to champions.
 
 <iframe
   src="assets/totaldmg.html"
-  width="800"
+  width="900"
   height="600"
   frameborder="0"
 ></iframe>
@@ -73,7 +73,7 @@ Next I wanted to see how `position` and `result` would compare with each other f
 
 <iframe
   src="assets/karmapos.html"
-  width="800"
+  width="900"
   height="600"
   frameborder="0"
 ></iframe>
@@ -112,7 +112,7 @@ I performed a permutation test by shuffling the `league` column and completed 50
 
 <iframe
   src="assets/marleague.html"
-  width="800"
+  width="900"
   height="600"
   frameborder="0"
 ></iframe>
@@ -130,7 +130,7 @@ Once again, I performed a permutation test by shuffling the `side` column and re
 
 <iframe
   src="assets/notmarside.html"
-  width="800"
+  width="900"
   height="600"
   frameborder="0"
 ></iframe>
@@ -152,7 +152,7 @@ Since mid and top lanes are both solo lanes, where players play 1v1 against thei
 
 I performed a permutation test by shuffling the `mid` and `top` labels while plotting `totalgold`. I repeated this process 500 times and the following histogram shows the results:
 
-<iframe src="assets/meandifftotalgold.html" width="800" height="600" frameborder="0"></iframe>
+<iframe src="assets/meandifftotalgold.html" width="900" height="600" frameborder="0"></iframe>
 
 The p-value is 0.0, which is less than 0.05 so I reject the null hypothesis. This implies that there is a difference in total gold distribution between the mid and top lanes for Karma.
 
@@ -195,7 +195,7 @@ The following histogram shows the distribution of absolute differences in accura
 
 <iframe
   src="assets/fairness.html"
-  width="600"
+  width="900"
   height="600"
   frameborder="0"
 ></iframe>
