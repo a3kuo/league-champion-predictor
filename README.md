@@ -26,7 +26,7 @@ The original dataframe has 150,180 rows, representing individual players and tea
 |`'totalgold'`                |Total gold the player obtained during the match|
 |`'total cs'`                |Total amount of minion or monster kills the player got during the match|
 
-These columns will be used to explore the data. Since my favorite champion is Karma, the data and models will focus on Karma. So the final question is "What is the best role for Karma to play?"
+These columns will be used to explore the data. Since my favorite champion is Karma, the data and models will focus on Karma. So the final question is **"What is the best role for Karma to play?"**
 
 ## Data Cleaning and Exploratory Data Analysis
 The data needs to be cleaned in order to analyze it efficiently.
@@ -145,9 +145,9 @@ ex. when position is mid, it means "mid lane"*
 
 Since mid and top lanes are both solo lanes, where players play 1v1 against their opponent, I made my hypotheses based on these lanes:
 
-**Null Hypothesis**: Karma played in the mid lane has the same gold distribution as Karma played in the top lane.
-**Alternate Hypothesis**: Karma played in the mid lane has a higher gold distribution than Karma played in the top lane.
-**Test Statistic**: Difference in means
+**Null Hypothesis**: Karma played in the mid lane has the same gold distribution as Karma played in the top lane. <br>
+**Alternate Hypothesis**: Karma played in the mid lane has a higher gold distribution than Karma played in the top lane. <br>
+**Test Statistic**: Difference in means <br>
 **Significance Level**: 0.05
 
 I performed a permutation test by shuffling the `mid` and `top` labels while plotting `totalgold`. I repeated this process 500 times and the following histogram shows the results:
