@@ -90,3 +90,46 @@ Different positions do different jobs, but they are still all measured by the sa
 
 It shows that bot lane often has the most combined stats, but assists are led by the support role.
 
+## Assessment of Missingness
+Some columns include missing values, but most of them are just missing by design. However, there are some that are missing in other ways.
+
+### NMAR Analysis
+All the ban columns (`ban1`, `ban2`, `ban3`, `ban4`, `ban5`) I believe are NMAR (Not Missing At Random) because besides the bans being in groups due to design, some values are missing seemingly for no reason. This is the case because bans are optional actions decided by the player during the pregame phase (champ select) portion of match, although in a professional setting you would always want to ban. The values are missing because either the player chose to not ban either on purpose or by accident, such as the timer for banning running out, making these 5 columns NMAR. In order to make these columns MAR (Missing At Random), there needs to be a column that tracks total bans, either per team or per game. There are normally 5 bans per team, so 10 per game, and if the number deviates from this, it shows one of the bans are missing, making it MAR on this new column.
+
+### Missingness Dependency
+One column that has some missing values is the `monsterkillsenemyjungle` column, which represents the amount of monsters the player killed in the enemy's jungle (where monsters spawn).
+I want to see if this column is MAR depending on `league`, so my hypotheses are: <br>
+
+**Null Hypothesis**: The distribution of `league` when `monsterkillsenemyjungle` is missing has the same distribution as when `monsterkillsenemyjungle` is not missing. <br>
+**Alternate Hypothesis**: The distribution of `league` when `monsterkillsenemyjungle` is missing is different when `monsterkillsenemyjungle` is not missing. <br>
+**Test Statistic**: `TVD`s because I am comparing categorical distributions. <br>
+**Significance Level**: 0.05
+
+I performed a permutation test by shuffling the `league` column and completed 500 repetitions. The result of the empirical distribution of the TVDs is below:
+
+<iframe
+  src="assets/marleague.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The p-value is 0.0, which is less than 0.05, so I rejected the null hypothesis, showing that `monsterkillsenemyjungle` is MAR depending on `league`.
+
+After, I wanted to see if another column, `side` had dependency for `monsterkillsenemyjungle`, so my new hypotheses are: <br>
+
+**Null Hypothesis**: The distribution of `side` when `monsterkillsenemyjungle` is missing has the same distribution as when `monsterkillsenemyjungle` is not missing. <br>
+**Alternate Hypothesis**: The distribution of `side` when`monsterkillsenemyjungle` is missing is different when `monsterkillsenemyjungle` is not missing. <br>
+**Test Statistic**: `TVD`s because I am comparing categorical distributions. <br>
+**Significance Level**: 0.05
+
+Once again, I performed a permutation test by shuffling the `side` column and repeated the same process as above. The result of the empirical distribution of TVDs is below:
+
+<iframe
+  src="assets/notmarside.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The p-value is 1.0, which is greater than 0.05, so I failed to reject the null hypothesis, meaning that `monsterkillsenemyjungle` is not MAR depending on `side`.
