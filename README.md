@@ -160,14 +160,14 @@ The p-value is 0.0, which is less than 0.05 so I reject the null hypothesis. Thi
 
 ### Findings
 From previous hypothesis testing, it suggests that there is a difference in Karma played mid and Karma played top, but there are many other columns than just total gold. I also want to generalize this to any champion, but the model will only focus on the champion Karma. So my prediction problem will be:
-**Given the champion Karma, can I predict what position they played?
+**Given the champion Karma, can I predict what position they played?**
 
 ### Execution
 This model will be a multi-class classification where the response variable is `position`. This variable is chosen because it represents the position the champion played in the game. F1-score will be the chosen metric because although accuracy is a good overall metric, each position is not played equally by most champions, including Karma as shown earlier, resulting in the data being imbalanced. This means that F1-score will give better results. I am trying to predict what position they played after the game completed, so all columns are available to be used for prediction.
 
 ## Baseline Model
 
-Given the champion Karma, I used `RandomForestClassifier` to predict the position that the champion was played in. The dataset is quite large and I want to avoid overfitting if I just used a `DecisionTreeClassifier`. The features I am using are `damagetochampions` (quantitative), `totalgold` (quantitative), and `result` (nominal and given in binary form).` Since `gamelength` varies with each match, I need to transform `damagetochampions` and `totalgold` using `StandardScaler`. No encondings are necessary since result is already in the correct form.
+Given the champion Karma, I used `RandomForestClassifier` to predict the position that the champion was played in. The dataset is quite large and I want to avoid overfitting if I just used a `DecisionTreeClassifier`. The features I am using are `damagetochampions` (quantitative), `totalgold` (quantitative), and `result` (nominal and given in binary form). Since `gamelength` varies with each match, I need to transform `damagetochampions` and `totalgold` using `StandardScaler`. No encondings are necessary since result is already in the correct form.
 
 `damagetochampions` was chosen because by doing more damage to the enemy, a player is able to apply pressure to them and `totalgold` was chosen because higher gold translates to a higher power level of the champion. `result` is chosen because a win would be better than a loss in that role.
 
